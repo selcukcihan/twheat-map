@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b2e2d81b-2540-47b9-a162-11bf0df867dd/deploy-status)](https://app.netlify.com/sites/elated-franklin-952c45/deploys)
+
 This is a toy project built with [react](http://reactjs.org/), integrated with [Auth0](https://auth0.com).
 It shows you the locations of your Twitter friends.
 You can access the application on [twheat-map.selcukcihan.com](https://twheat-map.selcukcihan.com).
