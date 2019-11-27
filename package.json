@@ -1,7 +1,6 @@
 {
   "name": "twheat-map",
   "description": "Toy project showing location of your followers on a map",
-  "homepage": "https://github.com/selcukcihan/twheat-map",
   "repository": {
     "type": "git",
     "url": "https://github.com/selcukcihan/twheat-map.git"
