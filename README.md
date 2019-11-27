@@ -1,3 +1,13 @@
+This is a toy project built with [react](http://reactjs.org/), integrated with [Auth0](https://auth0.com).
+It shows you the locations of your Twitter friends.
+You can access the application on [twheat-map.selcukcihan.com](https://twheat-map.selcukcihan.com).
+The application is hosted on [Netlify](https://www.netlify.com/).
+
+There is a series of blog posts on [my personal blog](https://blog.selcukcihan.com/web-development/twheat-map/), in Turkish, describing the development process.
+Map is rendered using [react-simple-maps](https://www.react-simple-maps.io/) and [topojson map file](https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json) was also copied from the same.
+The backend is hosted on AWS as serverless functions, [backend repository](http://github.com/selcukcihan/twheat-map-backend) is public as well.
+![Twheat-map screenshot](twheat-map-screenshot.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

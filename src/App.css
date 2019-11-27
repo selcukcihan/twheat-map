@@ -1,22 +1,50 @@
-.App {
-  text-align: center;
+.next-steps .fa-link {
+    margin-right: 5px;
 }
 
-.App-logo {
-  height: 40vmin;
+/* Fix for use only flexbox in content area */
+.next-steps .row {
+    margin-bottom: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.next-steps .col-md-5 {
+    margin-bottom: 3rem;
 }
 
-.App-link {
-  color: #09d3ac;
+@media (max-width: 768px) {
+    .next-steps .col-md-5 {
+        margin-bottom: 0;
+    }
+}
+
+.spinner {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.spinner-2 {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #F8F9FA;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.margin-auto-block {
+    display: block;
+    margin: auto;
+    height: 60vh;
 }
