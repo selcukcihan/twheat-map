@@ -18,13 +18,15 @@ function getRandomizedOffset() {
 
 const Heatmap = () => {
     const [apiMessage, setApiMessage] = useState(null);
+    const [locations, setLocations] = useState(null);
     const { getTokenSilently } = useAuth0();
 
-    const callApi = async () => {
+    const callApi = async (continuation) => {
         try {
             const token = await getTokenSilently();
-
-            const response = await fetch("https://r6ssdb9382.execute-api.us-east-1.amazonaws.com/dev/heatmap", {
+            const url = new URL("https://r6ssdb9382.execute-api.us-east-1.amazonaws.com/dev/heatmap");
+            url.searchParams.append('continuation', continuation)
+            const response = await fetch(url, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -32,8 +34,13 @@ const Heatmap = () => {
             });
 
             const responseData = await response.json();
-
             setApiMessage(responseData);
+            setLocations(function(previous) {
+                return responseData.locations.concat(previous === null ? [] : previous);
+            });
+            if (responseData.continuation !== '') {
+                return await callApi(responseData.continuation)
+            }
         } catch (error) {
             console.error(error);
         }
@@ -41,13 +48,13 @@ const Heatmap = () => {
 
     useEffect(() => {
         if (apiMessage === null) {
-            callApi();
+            callApi('');
         }
     });
 
     return (
         <>
-            {!apiMessage && (
+            {(!locations || apiMessage && apiMessage.continuation !== '') && (
             <Loading className="spinner-2" />)}
             <ComposableMap className="margin-auto-block">
                 <Geographies geography={topoJson}>
@@ -63,7 +70,7 @@ const Heatmap = () => {
                             ))
                     }
                 </Geographies>
-                {apiMessage && apiMessage.map((coordinates, index) => (
+                {locations && locations.map((coordinates, index) => (
                     <Marker key={index} coordinates={[coordinates.lng, coordinates.lat]}>
                         <g
                             fill="none"
