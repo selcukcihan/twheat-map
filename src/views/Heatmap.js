@@ -25,6 +25,7 @@ const Heatmap = () => {
         try {
             const token = await getTokenSilently();
             const url = new URL("https://r6ssdb9382.execute-api.us-east-1.amazonaws.com/dev/heatmap");
+            //const url = new URL("http://localhost:3001/heatmap");
             url.searchParams.append('continuation', continuation)
             const response = await fetch(url, {
                 method: "GET",
@@ -39,10 +40,19 @@ const Heatmap = () => {
                 return responseData.locations.concat(previous === null ? [] : previous);
             });
             if (responseData.continuation !== '') {
-                return await callApi(responseData.continuation)
+                setTimeout(function() {
+                    callApi(responseData.continuation);
+                }, 500);
             }
         } catch (error) {
             console.error(error);
+            setApiMessage({
+                locations: [],
+                continuation: ''
+            });
+            setLocations(function(previous) {
+                return previous === null ? [] : previous;
+            });
         }
     };
 
